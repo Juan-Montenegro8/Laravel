@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', HomeController::class);
 
 //ruta index
-Route::get('/posts', [PostController::class, 'index'])
+/*Route::get('/posts', [PostController::class, 'index'])
     ->name('posts.index');
 
 //ruta mostrar crea
@@ -43,7 +43,12 @@ Route::put('/posts/{post}', [PostController::class, 'update'])
 
 //ruta eliminar (delete para eliminacion)
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])
-    ->name('posts.destroy');
+    ->name('posts.destroy');*/
+//-----------------------------------------------------------------------------------
+/*Route::resource('articulos', PostController::class)
+    ->parameters('posts')
+    ->names('posts');*/
+Route::resource('posts', PostController::class);
 //-----------------------------------------------------------------------------------
 /*
 Route::get('/contacto', function () {
