@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +50,23 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])
     ->parameters('posts')
     ->names('posts');*/
 Route::resource('posts', PostController::class);
+Route::get('/prueba', function () {
+    /*$users = DB::table('users')
+        ->orderBy('id')
+        ->chunk(100, function ($users) {
+            foreach ($users as $user) {
+                echo $user->name . '<br>';
+            }
+        });*/
+    /*DB::table('users')
+        ->orderBy('id')
+        ->lazy()->each(function ($user) {
+            echo $user->name . '<br>';
+        });*/
+    $users = DB::table('users')
+        ->paginate(10);
+    return view('prueba', compact('users'));
+});
 //-----------------------------------------------------------------------------------
 /*
 Route::get('/contacto', function () {
