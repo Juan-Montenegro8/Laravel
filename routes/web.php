@@ -64,7 +64,7 @@ Route::get('/prueba', function () {
             echo $user->name . '<br>';
         });*/
     $users = DB::table('users')
-        ->paginate(10);
+        ->paginate(10); 
     return view('prueba', compact('users'));
 });
 //-----------------------------------------------------------------------------------
